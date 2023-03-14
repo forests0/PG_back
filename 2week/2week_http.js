@@ -9,7 +9,8 @@ const server = http.createServer((req, res) => {
 	res.setHeader('Content-Type', 'text/plain');
     if(req.url === "/admin") {
         fs.readFile('alert.html', (err, data) => {
-            res.end()
+            res.writeHead(200, { "Content-Type": "text/html;charset = utf-8" });
+            res.end(data)
         })
     }
     else if(req.url === "/hello") {
