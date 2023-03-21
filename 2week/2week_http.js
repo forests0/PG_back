@@ -20,12 +20,15 @@ const server = http.createServer((req, res) => {
         console.log(parsedUrl['/?name'])
         response.end(`Hello, ${name}!`)
     }
-    else {
+    else if(req.url === "/"){
         fs.readFile("index.html", (err, data) => {
             res.writeHead(200, { "Content-Type": "text/html;charset = utf-8" });
             res.end(data);
           });
         }
+    else {
+        res.end('No url');
+    }
 });
 
 server.listen(port, hostname, () => {
